@@ -3,9 +3,13 @@ import { Navbar } from '../components/common/Navbar'
 
 const IndexPage: NextPage<Record<string, never>> = () => {
   return (
-    <main>
+    <>
       <Navbar />
-    </main>
+      <main className="pt-5 flex flex-col items-center">
+        <h1 className="mb-5 text-2xl text-center">Crea il tuo eroe per la campagna co-op di VoL</h1>
+        <img src="https://picsum.photos/600/800" alt="Hero sheet" />
+      </main>
+    </>
   )
 }
 
