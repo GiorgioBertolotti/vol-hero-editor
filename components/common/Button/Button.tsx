@@ -8,17 +8,20 @@ export enum ButtonType {
   DANGER = 'bg-red-500 border-red-600 text-white',
 }
 
-interface IButtonProps {
+interface IButtonProps extends Partial<HTMLButtonElement> {
   label?: string
   icon?: IconDefinition
-  type?: ButtonType
+  buttonType?: ButtonType
+  className?: string
 }
 
 const Button: FunctionComponent<IButtonProps> = (props) => {
-  const { label = '', icon, type = ButtonType.PRIMARY } = props
+  const { label = '', icon, className, buttonType: type = ButtonType.PRIMARY } = props
 
   const renderButton = (children: JSX.Element | string): JSX.Element => (
-    <button className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${type}`}>{children}</button>
+    <button className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${type} ${className}`}>
+      {children}
+    </button>
   )
 
   return icon ? renderButton(<FontAwesomeIcon icon={icon} />) : renderButton(label)

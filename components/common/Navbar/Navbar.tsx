@@ -19,11 +19,11 @@ const Navbar: FunctionComponent<INavbarProps> = (props) => {
     } else {
       return user ? (
         <>
-          <Button type={ButtonType.PRIMARY} icon={faUser} />
-          <Button type={ButtonType.DANGER} icon={faSignOutAlt} />
+          <Button buttonType={ButtonType.PRIMARY} icon={faUser} className="mr-2" />
+          <Button buttonType={ButtonType.DANGER} icon={faSignOutAlt} />
         </>
       ) : (
-        <Button label="REGISTRATI" type={ButtonType.PRIMARY} />
+        <Button label="REGISTRATI" buttonType={ButtonType.PRIMARY} />
       )
     }
   }
