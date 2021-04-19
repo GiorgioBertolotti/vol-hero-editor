@@ -3,7 +3,7 @@ import firebase from 'firebase'
 import React, { FunctionComponent } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Button, ButtonType } from '../Button'
-
+import Link from 'next/link'
 interface INavbarProps {
   hideActions?: boolean
 }
@@ -23,7 +23,9 @@ const Navbar: FunctionComponent<INavbarProps> = (props) => {
           <Button buttonType={ButtonType.DANGER} icon={faSignOutAlt} />
         </>
       ) : (
-        <Button label="REGISTRATI" buttonType={ButtonType.PRIMARY} />
+        <Link href="/registration">
+          <Button label="REGISTRATI" buttonType={ButtonType.PRIMARY} />
+        </Link>
       )
     }
   }

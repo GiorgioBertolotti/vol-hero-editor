@@ -8,7 +8,7 @@ export enum ButtonType {
   DANGER = 'bg-red-500 border-red-600 text-white',
 }
 
-interface IButtonProps extends Partial<HTMLButtonElement> {
+interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
   label?: string
   icon?: IconDefinition
   buttonType?: ButtonType
@@ -16,10 +16,21 @@ interface IButtonProps extends Partial<HTMLButtonElement> {
 }
 
 const Button: FunctionComponent<IButtonProps> = (props) => {
-  const { label = '', icon, className, buttonType: type = ButtonType.PRIMARY } = props
+  const {
+    label = '',
+    icon,
+    className,
+    buttonType: buttonType = ButtonType.PRIMARY,
+    type,
+    ...rest
+  } = props
 
   const renderButton = (children: JSX.Element | string): JSX.Element => (
-    <button className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${type} ${className}`}>
+    <button
+      {...rest}
+      type={type as 'button' | 'submit' | 'reset' | undefined}
+      className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${buttonType} ${className}`}
+    >
       {children}
     </button>
   )
