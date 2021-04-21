@@ -1,14 +1,16 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { NextPage } from 'next'
+import Link from 'next/link'
 import React from 'react'
+import { Button } from '../components/common/Button'
 import { Navbar } from '../components/common/Navbar'
 
 const Registration: NextPage<Record<string, never>> = () => {
   return (
     <>
       <Navbar />
-      <main className="pt-2 flex flex-col items-center">
-        <div className="rounded-lg bg-green-100 py-16 px-24">
+      <main className="pt-2 flex flex-col items-center text-green-900">
+        <div className="rounded-lg bg-green-50 py-16 px-24 max-w-lg">
           <Formik
             initialValues={{ email: '', password: '' }}
             validate={(values) => {
@@ -28,14 +30,43 @@ const Registration: NextPage<Record<string, never>> = () => {
             }}
           >
             {({ isSubmitting }) => (
-              <Form>
-                <Field type="email" name="email" label="xiao" />
-                <ErrorMessage name="email" component="div" />
-                <Field type="password" name="password" />
-                <ErrorMessage name="password" component="div" />
-                <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button>
+              <Form className="block">
+                <label htmlFor="email">E-mail</label>
+                <Field
+                  type="email"
+                  name="email"
+                  className="mt-2 w-full border border-dashed border-green-500 rounded-lg p-2"
+                />
+                <div className="mb-6">
+                  <ErrorMessage name="email" component="div" className="mt-2 text-red-600" />
+                </div>
+                <label htmlFor="password">Password</label>
+                <Field
+                  type="password"
+                  name="password"
+                  className="mt-2 w-full border border-dashed border-green-500 rounded-lg p-2"
+                />
+                <div className="mb-6">
+                  <ErrorMessage name="password" component="div" className="mt-2 text-red-600" />
+                </div>
+                <label htmlFor="confirm">Conferma password</label>
+                <Field
+                  type="password"
+                  name="confirm"
+                  className="mt-2 w-full border border-dashed border-green-500 rounded-lg p-2"
+                />
+                <div className="mb-12">
+                  <ErrorMessage name="confirm" component="div" className="mt-2 text-red-600" />
+                </div>
+                <div className="flex flex-row justify-center mb-6">
+                  <Button label="Crea account" type="submit" disabled={isSubmitting} />
+                </div>
+                <p>
+                  Hai già un account?{' '}
+                  <Link href="/login">
+                    <a className="text-green-500">Accedi</a>
+                  </Link>
+                </p>
               </Form>
             )}
           </Formik>
