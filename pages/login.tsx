@@ -5,7 +5,7 @@ import React from 'react'
 import { Button } from '../components/common/Button'
 import { Navbar } from '../components/common/Navbar'
 
-const Registration: NextPage<Record<string, never>> = () => {
+const Login: NextPage<Record<string, never>> = () => {
   return (
     <>
       <Navbar />
@@ -49,22 +49,13 @@ const Registration: NextPage<Record<string, never>> = () => {
                 <div className="mb-6">
                   <ErrorMessage name="password" component="div" className="mt-2 text-red-600" />
                 </div>
-                <label htmlFor="confirm">Conferma password</label>
-                <Field
-                  type="password"
-                  name="confirm"
-                  className="mt-2 w-full border border-dashed border-green-500 rounded-lg p-2"
-                />
-                <div className="mb-12">
-                  <ErrorMessage name="confirm" component="div" className="mt-2 text-red-600" />
-                </div>
                 <div className="flex flex-row justify-center mb-6">
-                  <Button label="Crea account" type="submit" disabled={isSubmitting} />
+                  <Button label="Accedi" type="submit" disabled={isSubmitting} />
                 </div>
                 <p>
-                  Hai già un account?{' '}
-                  <Link href="/login">
-                    <a className="text-green-500">Accedi</a>
+                  Non hai un account?{' '}
+                  <Link href="/registration">
+                    <a className="text-green-500">Creane uno</a>
                   </Link>
                 </p>
               </Form>
@@ -91,4 +82,4 @@ const Registration: NextPage<Record<string, never>> = () => {
 //   }
 // }
 
-export default Registration
+export default Login

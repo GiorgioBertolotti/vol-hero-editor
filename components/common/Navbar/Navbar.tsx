@@ -33,10 +33,12 @@ const Navbar: FunctionComponent<INavbarProps> = (props) => {
   return (
     <header>
       <nav className="w-full px-12 py-10 flex flex-row justify-between items-center">
-        <div className="flex items-center">
-          <img src="./vol_logo.png" alt="logo" height="75px" width="390px" className="mr-6" />
-          <p className="text-5xl font-bold text-green-500">Hero Editor</p>
-        </div>
+        <Link href="/">
+          <div className="flex items-center cursor-pointer">
+            <img src="./vol_logo.png" alt="logo" height="75px" width="390px" className="mr-6" />
+            <p className="text-5xl font-bold text-green-500">Hero Editor</p>
+          </div>
+        </Link>
         {renderActions()}
       </nav>
     </header>
