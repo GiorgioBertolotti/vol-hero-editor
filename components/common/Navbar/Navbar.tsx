@@ -13,15 +13,19 @@ const Navbar: FunctionComponent<INavbarProps> = (props) => {
 
   const [user] = useAuthState(firebase.auth())
 
+  const logout = (): void => {
+    firebase.auth().signOut()
+  }
+
   const renderActions = (): JSX.Element => {
     if (hideActions) {
       return <div />
     } else {
       return user ? (
-        <>
+        <div>
           <Button buttonType={ButtonType.PRIMARY} icon={faUser} className="mr-2" />
-          <Button buttonType={ButtonType.DANGER} icon={faSignOutAlt} />
-        </>
+          <Button buttonType={ButtonType.DANGER} icon={faSignOutAlt} onClick={logout} />
+        </div>
       ) : (
         <Link href="/registration">
           <Button label="REGISTRATI" buttonType={ButtonType.PRIMARY} />
@@ -31,7 +35,7 @@ const Navbar: FunctionComponent<INavbarProps> = (props) => {
   }
 
   return (
-    <header>
+    <header className="z-50">
       <nav className="w-full px-12 py-10 flex flex-row justify-between items-center">
         <Link href="/">
           <div className="flex items-center cursor-pointer">

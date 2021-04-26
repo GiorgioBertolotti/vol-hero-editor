@@ -19,17 +19,23 @@ const Button: FunctionComponent<IButtonProps> = (props) => {
   const {
     label = '',
     icon,
-    className,
+    className = '',
     buttonType: buttonType = ButtonType.PRIMARY,
+    disabled = false,
     type,
     ...rest
   } = props
+
+  const buttonStyle = disabled
+    ? 'bg-gray-300 border-gray-300 cursor-not-allowed text-white'
+    : buttonType
 
   const renderButton = (children: JSX.Element | string): JSX.Element => (
     <button
       {...rest}
       type={type as 'button' | 'submit' | 'reset' | undefined}
-      className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${buttonType} ${className}`}
+      className={`align-baseline rounded-lg py-2 px-4 border-b-2 ${buttonStyle} ${className}`}
+      disabled={disabled}
     >
       {children}
     </button>
